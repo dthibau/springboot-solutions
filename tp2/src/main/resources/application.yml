@@ -7,3 +7,15 @@ spring:
           import_files: import.sql
 
 
+---
+spring:
+  profiles: prod
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  datasource:
+    url: jdbc:postgresql://localhost:5434/f_members
+    username: postgres
+    password: postgres
