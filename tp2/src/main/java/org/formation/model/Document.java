@@ -1,6 +1,7 @@
 package org.formation.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -68,6 +69,12 @@ public class Document implements Serializable {
 
 	public void setUploadedDate(Date uploadedDate) {
 		this.uploadedDate = uploadedDate;
+	}
+
+	@Override
+	public String toString() {
+		return "Document [id=" + id + ", name=" + name + ", contentType=" + contentType + ", data="
+				+ Arrays.toString(data) + ", uploadedDate=" + uploadedDate + "]";
 	}
 	
 	
