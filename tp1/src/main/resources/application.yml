@@ -8,3 +8,27 @@ hello:
   greeting: 'Bye'
   style: uppercase
   
+logging:
+  level:
+    root: WARN
+    '[org.springframework.boot]': debug
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+logging:
+  logback:
+    rollingpolicy:
+      max-file-size: 10MB
+  file:
+    name: server.log
+    path: .
+    
+
+hello:
+  greeting: 'Biééén le Bjour '
+
+server:
+  port: 8000
