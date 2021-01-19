@@ -1,0 +1,10 @@
+app:
+  random: ${random.uuid}
+
+
+hello:
+  case-type: camel
+  position: 1
+  greeting: 'Bye'
+  style: uppercase
+  
