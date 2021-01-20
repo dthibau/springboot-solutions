@@ -8,7 +8,7 @@ spring:
 
 logging:
   level:
-    org.springframework.transaction: trace
+    org.springframework.transaction: debug
 ---
 spring:
   profiles: prod
