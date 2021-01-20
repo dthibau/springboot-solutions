@@ -18,6 +18,8 @@ import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 
@@ -39,6 +41,7 @@ public class Member {
 	private Date registeredDate;
 	
 	@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true)
+	@JsonIgnore
 	private Set<Document> documents = new HashSet<Document>();
 
 	public long getId() {
@@ -49,7 +52,6 @@ public class Member {
 		this.id = id;
 	}
 
-	@Column(unique=true)
 	public String getEmail() {
 		return email;
 	}
