@@ -26,7 +26,7 @@ public interface DocumentRepository extends JpaRepository<Document, Long> {
 	public List<Document> findByOwnerName(String name);
 	
 	@Query("select m.documents from Member m where m = ?1")
-	public Slice<Document> findByOwner(Member member, Pageable pageable);
+	public Slice<Document> findByOwnerSlice(Member member, Pageable pageable);
 	
 	@Query("select m.documents from Member m where m.id = ?1")
 	public List<Document> findByOwnerId(Long idMember);
