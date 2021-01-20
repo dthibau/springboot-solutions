@@ -14,9 +14,16 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 @RestController
 @RequestMapping("/api/members")
@@ -60,8 +67,13 @@ public class MemberRestController {
 
 	}
 	
-	@PostMapping()
-	public ResponseEntity<Member> create(@Valid Member member) {
+	@Operation(summary = "Créer un Membre", description = "Ne pas saisir id, nomComplet et registeredDate" )
+	@ApiResponses(value = { 
+	  @ApiResponse(responseCode = "201", description = "Le membre est créé", 
+	    content = { @Content(mediaType = "application/json", 
+	      schema = @Schema(implementation = Member.class)) }) })
+	@PostMapping
+	public ResponseEntity<Member> create(@Valid @RequestBody Member member) {
 
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(memberRepository.save(member));
@@ -69,7 +81,7 @@ public class MemberRestController {
 	}
 	
 	@PutMapping
-	public ResponseEntity<Member> replace(@Valid Member member) throws MemberNotFoundException {
+	public ResponseEntity<Member> replace(@Valid @RequestBody Member member) throws MemberNotFoundException {
 		memberRepository.findById(member.getId()).orElseThrow(
 				() -> new MemberNotFoundException("Id " + member.getId()));
 		
@@ -78,7 +90,7 @@ public class MemberRestController {
 
 	}
 	@PatchMapping
-	public ResponseEntity<Member> partialUpdate(Member member) throws MemberNotFoundException {
+	public ResponseEntity<Member> partialUpdate(@RequestBody Member member) throws MemberNotFoundException {
 		Member originalMember = memberRepository.findById(member.getId()).orElseThrow(
 				() -> new MemberNotFoundException("Id " + member.getId()));
 		if ( member.getEmail() != null ) {
