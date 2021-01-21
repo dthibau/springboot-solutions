@@ -35,6 +35,8 @@ public class Member {
 	
 	private String nom,prenom;
 	
+	private String role;
+	
 	private int age;
 	
 	@Temporal(TemporalType.TIMESTAMP)
@@ -112,6 +114,14 @@ public class Member {
 		this.documents.add(document);
 	}
 	
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	@Transient
 	public String getNomComplet() {
 		return getPrenom() + " " + getNom();

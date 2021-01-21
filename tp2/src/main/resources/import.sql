@@ -1,10 +1,11 @@
 
-insert into MEMBER (EMAIL, PASSWORD, NOM, PRENOM, AGE) values ('dthibau@wmmod.com', 'secret','THIBAU','David',49);
-insert into MEMBER (EMAIL, PASSWORD, NOM, PRENOM, AGE) values ('dthibau@mymeetingsondemand.com', 'secret','THIBAU','Michel',52);
-insert into MEMBER (EMAIL, PASSWORD, NOM, PRENOM, AGE) values ('david.thibau@gmail.com', 'secret','JEAN-PIERRE','Gaston',67);
-insert into MEMBER (EMAIL, PASSWORD, NOM, PRENOM, AGE) values ('toto@titi.com', 'secret','TITI','Toto',40);
-insert into MEMBER (EMAIL, PASSWORD, NOM, PRENOM, AGE) values ('tutu@tata.com', 'secret','TATA','Tutu',29);
-insert into MEMBER (EMAIL, PASSWORD, NOM, PRENOM, AGE) values ('tete@tonton.com', 'secret','TONTON','Tete',88);
+insert into MEMBER (EMAIL, PASSWORD, NOM, PRENOM, AGE, ROLE) values ('admin', 'secret','THIBAU','David',49,'ROLE_ADMIN');
+insert into MEMBER (EMAIL, PASSWORD, NOM, PRENOM, AGE, ROLE) values ('dthibau@wmmod.com', 'secret','THIBAU','David',49,'ROLE_USER');
+insert into MEMBER (EMAIL, PASSWORD, NOM, PRENOM, AGE, ROLE) values ('dthibau@mymeetingsondemand.com', 'secret','THIBAU','Michel',52,'ROLE_USER');
+insert into MEMBER (EMAIL, PASSWORD, NOM, PRENOM, AGE, ROLE) values ('david.thibau@gmail.com', 'secret','JEAN-PIERRE','Gaston',67,'ROLE_USER');
+insert into MEMBER (EMAIL, PASSWORD, NOM, PRENOM, AGE, ROLE) values ('toto@titi.com', 'secret','TITI','Toto',40,'ROLE_USER');
+insert into MEMBER (EMAIL, PASSWORD, NOM, PRENOM, AGE, ROLE) values ('tutu@tata.com', 'secret','TATA','Tutu',29,'ROLE_USER');
+insert into MEMBER (EMAIL, PASSWORD, NOM, PRENOM, AGE, ROLE) values ('tete@tonton.com', 'secret','TONTON','Tete',88,'ROLE_USER');
 
 insert into DOCUMENT (NAME, CONTENT_TYPE) values ('scrum.ppt', '	application/vnd.ms-powerpoint');
 insert into DOCUMENT (NAME, CONTENT_TYPE) values ('widlfly.odp', 'application/vnd.oasis.opendocument.presentation');
