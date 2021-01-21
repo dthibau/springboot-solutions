@@ -1,6 +1,6 @@
 spring:
   jpa:
-    show-sql: true
+    show-sql: false
     properties:
       hibernate:
         hbm2ddl:
@@ -10,7 +10,8 @@ spring:
 
 logging:
   level:
-    org.springframework.transaction: debug
+#    org.springframework.transaction: debug
+    org.springframework.security: debug
 ---
 spring:
   profiles: prod
