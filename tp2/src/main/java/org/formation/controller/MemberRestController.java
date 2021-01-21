@@ -75,6 +75,7 @@ public class MemberRestController {
 	@PostMapping
 	public ResponseEntity<Member> create(@Valid @RequestBody Member member) {
 
+		member.setId(0l);
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(memberRepository.save(member));
 
