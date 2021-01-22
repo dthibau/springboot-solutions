@@ -34,3 +34,16 @@ spring:
     hikari:
       maximum-pool-size: 20
       connection-timeout: 20000 
+
+---
+spring:
+  profiles:
+    oauth
+    
+  security:
+    oauth2:
+      client: 
+        registration: 
+          github:
+            client-id: 65400b28079173786879
+            client-secret: b354d87a852b421b82a87094b8317da0d646aeb3
