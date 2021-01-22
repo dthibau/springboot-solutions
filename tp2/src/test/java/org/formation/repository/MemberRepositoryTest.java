@@ -5,20 +5,23 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Optional;
 
-import javax.persistence.EntityManager;
 import javax.sql.DataSource;
 
 import org.formation.model.Document;
 import org.formation.model.Member;
 import org.hibernate.LazyInitializationException;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.context.ApplicationContext;
 
-@SpringBootTest
+@DataJpaTest
 class MemberRepositoryTest {
 
 	@Autowired
@@ -28,10 +31,15 @@ class MemberRepositoryTest {
 	DocumentRepository documentRepository;
 
 	@Autowired
-	EntityManager entityManager;
+	TestEntityManager testEntityManager;
 
 	@Autowired
-	DataSource dataSource;
+	ApplicationContext applicationContext;
+	
+	@BeforeEach
+	public void setup() {
+		Arrays.stream(applicationContext.getBeanDefinitionNames()).forEach(System.out::println);
+	}
 
 	@Test
 	void testByEmailNotIgnoringCase() {
@@ -78,11 +86,9 @@ class MemberRepositoryTest {
 	@Test
 	void testingFullLoad() {
 		Member id1 = memberRepository.fullLoad(1l);
-		Member id2 = memberRepository.findById(1l).get();
-		entityManager.close();
 
 		id1.getDocuments().stream().forEach(System.out::println);
 
-		assertThrows(LazyInitializationException.class, () -> id2.getDocuments().stream().forEach(System.out::println));
+//		assertThrows(LazyInitializationException.class, () -> id2.getDocuments().stream().forEach(System.out::println));
 	}
 }
