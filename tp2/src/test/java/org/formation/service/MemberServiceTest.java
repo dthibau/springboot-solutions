@@ -23,13 +23,5 @@ public class MemberServiceTest {
 		memberService.addDocToAllMembers(doc);
 	}
 	
-	@Test
-	void testTransactionWithException() throws Exception {
-		Document doc = new Document();
-		doc.setContentType("dummy");
-		doc.setName("Dummy.doc");
-		doc.setUploadedDate(new Date());
-		
-		memberService.addDocToAllMembersWithException(doc);
-	}
+
 }

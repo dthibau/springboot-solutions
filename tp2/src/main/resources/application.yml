@@ -12,6 +12,9 @@ logging:
   level:
 #    org.springframework.transaction: debug
     org.springframework.security: debug
+  file:
+    name: server.log
+    path: .
 
 
 appli:
@@ -19,9 +22,22 @@ appli:
   validity: 1000
   rememberMe: 1000
 
+management:
+  endpoints: 
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always        
+        
+
 ---
 spring:
   profiles: prod
+
+  profiles.include:
+    - domainSecurity
 
   jpa:
     hibernate:
@@ -35,6 +51,9 @@ spring:
       maximum-pool-size: 20
       connection-timeout: 20000 
 
+springdoc:
+  api-docs:
+    enabled: false
 ---
 spring:
   profiles:
