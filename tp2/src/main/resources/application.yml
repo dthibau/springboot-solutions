@@ -34,10 +34,16 @@ management:
 
 ---
 spring:
-  profiles: prod
+  config:
+    activate:
+      on-profile: prod
 
-  profiles.include:
-    - domainSecurity
+#  profiles.include:
+#    - domainSecurity
+logging:
+  level:
+    org.springframework.security: warn
+    org.hibernate: warn
 
   jpa:
     hibernate:
@@ -56,8 +62,9 @@ springdoc:
     enabled: false
 ---
 spring:
-  profiles:
-    oauth
+  config:
+    activate:
+      on-profile: oauth
     
   security:
     oauth2:

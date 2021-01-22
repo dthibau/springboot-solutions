@@ -17,6 +17,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres/f_members
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_PROFILES_ACTIVE: prod,domainSecurity
     ports:
       - "8080:8080"
 
