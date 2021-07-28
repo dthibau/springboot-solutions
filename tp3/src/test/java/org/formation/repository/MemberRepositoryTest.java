@@ -79,7 +79,7 @@ class MemberRepositoryTest {
 
 	@Test
 	void testingFullLoad() {
-		Member id1 = memberRepository.fullLoad(1l);
+		Member id1 = memberRepository.fullLoad(1l).get();
 		Member id2 = memberRepository.findById(1l).get();
 		entityManager.close();
 

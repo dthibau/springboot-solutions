@@ -45,7 +45,7 @@ public class MemberRestController {
 	public ResponseEntity<Member> getById(@PathVariable long id) throws MemberNotFoundException {
 
 		return ResponseEntity.ok()
-				.body(memberRepository.fullLoad(id));
+				.body(memberRepository.fullLoad(id).orElseThrow(() -> new MemberNotFoundException("No such id")));
 
 	}
 	

@@ -6,7 +6,12 @@ spring:
   security:
     user:
       password: secret
-      
+
+appli:
+  secretKey: azerty
+  validity: 10000
+  rememberMe: 10000
+        
 logging:
   level:
     '[org.springframework.security]': debug    
