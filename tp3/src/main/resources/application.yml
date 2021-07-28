@@ -1,8 +1,15 @@
 spring:
   jpa:
-    show-sql: true
+    show-sql: false
     open-in-view: false    
-    
+
+  security:
+    user:
+      password: secret
+      
+logging:
+  level:
+    '[org.springframework.security]': debug    
 --- 
 spring:
   config:
