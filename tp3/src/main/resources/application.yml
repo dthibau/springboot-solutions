@@ -7,6 +7,16 @@ spring:
     user:
       password: secret
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  auditevents:
+    enabled: true
+  endpoint:
+    health:
+      show-details: always
 appli:
   secretKey: azerty
   validity: 10000

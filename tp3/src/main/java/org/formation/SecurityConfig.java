@@ -50,6 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     .and()
         .authorizeRequests() // ACLs
         .antMatchers("/api/authenticate").permitAll()
+        .antMatchers("/actuator/**").permitAll()
         .antMatchers("/swagger-ui.html","/swagger-ui/**","/v3/api-docs/**").permitAll()
 	    .antMatchers(HttpMethod.GET,"/api/**").authenticated()
 	    .antMatchers("/api/**").hasRole("ADMIN")
